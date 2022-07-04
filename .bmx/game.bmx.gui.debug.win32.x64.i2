@@ -49,8 +49,19 @@ import pub.opengles
 import pub.opengles3
 import pub.vulkan
 import pub.xmmintrin
+CharacterType^Object{
+.X#&
+.Y#&
+.Dir#&
+.Speed#&
+.Texture:TImage&
+-New()="__m_game_CharacterType_New"
+-Draw()="_m_game_CharacterType_Draw"
+-Move()="_m_game_CharacterType_Move"
+}="_m_game_CharacterType"
 GroundTImage:TImage&=mem:p("_m_game_GroundTImage")
 DudeTImage:TImage&=mem:p("_m_game_DudeTImage")
 DudeX#&=mem:p("_m_game_DudeX")
 DudeY#&=mem:p("_m_game_DudeY")
+CharacterList:TList&=mem:p("_m_game_CharacterList")
 Map_Array%&[,]&=mem:p("_m_game_Map_Array")

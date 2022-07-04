@@ -1,5 +1,5 @@
-#ifndef BLITZ_MAX_STUFF_GAME_BMX_GUI_DEBUG_WIN32_X64_H
-#define BLITZ_MAX_STUFF_GAME_BMX_GUI_DEBUG_WIN32_X64_H
+#ifndef TEST_FOR_SPACE_GAME_GAME_BMX_GUI_DEBUG_WIN32_X64_H
+#define TEST_FOR_SPACE_GAME_GAME_BMX_GUI_DEBUG_WIN32_X64_H
 
 #include <brl.mod/blitz.mod/.bmx/blitz.bmx.debug.win32.x64.h>
 #include <brl.mod/appstub.mod/.bmx/appstub.bmx.debug.win32.x64.h>
@@ -52,10 +52,45 @@
 #include <pub.mod/vulkan.mod/.bmx/vulkan.bmx.debug.win32.x64.h>
 #include <pub.mod/xmmintrin.mod/.bmx/xmmintrin.bmx.debug.win32.x64.h>
 int _bb_main();
+struct _m_game_CharacterType_obj;
 extern struct brl_max2d_image_TImage_obj* _m_game_GroundTImage;
 extern struct brl_max2d_image_TImage_obj* _m_game_DudeTImage;
 extern BBFLOAT _m_game_DudeX;
 extern BBFLOAT _m_game_DudeY;
+extern struct brl_linkedlist_TList_obj* _m_game_CharacterList;
 extern BBARRAY _m_game_Map_Array;
+void __m_game_CharacterType_New(struct _m_game_CharacterType_obj* o);
+typedef void (*_m_game_CharacterType_Draw_m)(struct _m_game_CharacterType_obj*);
+void __m_game_CharacterType_Draw(struct _m_game_CharacterType_obj*);
+typedef void (*_m_game_CharacterType_Move_m)(struct _m_game_CharacterType_obj*);
+void __m_game_CharacterType_Move(struct _m_game_CharacterType_obj*);
+struct BBClass__m_game_CharacterType {
+	BBClass*  super;
+	void      (*free)( BBObject *o );
+	BBDebugScope* debug_scope;
+	unsigned int instance_size;
+	void      (*ctor)( BBOBJECT o );
+	void      (*dtor)( BBOBJECT o );
+	BBSTRING  (*ToString)( BBOBJECT x );
+	int       (*Compare)( BBOBJECT x,BBOBJECT y );
+	BBOBJECT  (*SendMessage)( BBOBJECT o,BBOBJECT m,BBOBJECT s );
+	BBINTERFACETABLE itable;
+	void*     extra;
+	unsigned int obj_size;
+	unsigned int instance_count;
+	unsigned int fields_offset;
+	_m_game_CharacterType_Draw_m m_Draw;
+	_m_game_CharacterType_Move_m m_Move;
+};
+
+struct _m_game_CharacterType_obj {
+	struct BBClass__m_game_CharacterType* clas;
+	BBFLOAT __m_game_charactertype_x;
+	BBFLOAT __m_game_charactertype_y;
+	BBFLOAT __m_game_charactertype_dir;
+	BBFLOAT __m_game_charactertype_speed;
+	struct brl_max2d_image_TImage_obj* __m_game_charactertype_texture;
+};
+extern struct BBClass__m_game_CharacterType _m_game_CharacterType;
 
 #endif
