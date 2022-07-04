@@ -21,7 +21,7 @@ Next
 Type CharacterType 
     Field X#,Y#
     Field Dir:float
-    Field Speed:float = 0.02
+    Field Speed:float = 0.02 
 	Field Texture:TImage = DudeTImage
 
     Method Draw()
