@@ -20,7 +20,7 @@ For Local X:Int = 0 To 49' Creating a "floor"
 Next
 
 
-Type ProjectileType
+Type TProjectile
 	Field ID:Int
 	Field X:Float
 	Field Y:Float
@@ -33,22 +33,21 @@ Type ProjectileType
 	EndMethod
 EndType
 
-Type CharacterType 
-    Field X:Float
+Type TCharacter 
+	Field X:Float
 	Field Y:Float
-    Field Dir:float
-    Field Speed:float = 0.02 
+	Field Dir:float
+	Field Speed:float = 0.02 
 	Field Texture:TImage = DudeTImage
 	Field Weapon:string = "Default_Weapon"
-
-    Method Draw()
-        DrawImage( Texture, X, Y)
+	Method Draw()
+		DrawImage( Texture, X, Y)
 		'DrawImage( DudeTImage, X, Y)
-    End Method
+	End Method
 
 	Method Shoot()
-		Local NewProjectile:ProjectileType
-		NewProjectile = New ProjectileType
+		Local NewProjectile:TProjectile
+		NewProjectile = New TProjectile
 		NewProjectile.X = X
 		NewProjectile.Y = Y
 		NewProjectile.Dir = Dir
@@ -56,7 +55,7 @@ Type CharacterType
 		ProjectileList.AddLast(NewProjectile)
 	End Method
 
-    Method Move() 'Movement for CharacterType
+	Method Move() 'Movement for TCharacter
 		If Speed < 0 then Speed = 0
 		If speed > 0.1 Then speed = 0.1
 		if keydown(Key_D)
@@ -74,19 +73,18 @@ Type CharacterType
 		if keydown(key_Space)
 				Shoot()
 		Endif
-        X:+Speed*Cos( Dir ); Y:+Speed*Sin( Dir )
-    End Method	
-
+		X:+Speed*Cos( Dir ); Y:+Speed*Sin( Dir )
+	End Method	
 
 End Type
 
 For Local N:int = 1 To 1
-    Local NewCharacter:CharacterType
-    NewCharacter   = New CharacterType
-    NewCharacter.X = 400
+	Local NewCharacter:TCharacter
+	NewCharacter   = New TCharacter
+	NewCharacter.X = 400
 	NewCharacter.Y = 300
-    NewCharacter.Dir  = Rand( 0, 360 )
-    CharacterList.AddLast( NewCharacter )
+	NewCharacter.Dir  = Rand( 0, 360 )
+	CharacterList.AddLast( NewCharacter )
 Next
 
 
@@ -94,7 +92,7 @@ Next
 While Not KeyDown(KEY_ESCAPE)
 Cls()
 
-	For local Character:CharacterType = EachIn CharacterList
+	For local Character:TCharacter = EachIn CharacterList
 		Character.Draw()
 		Character.Move()	
 		Print Character.Dir
@@ -111,10 +109,10 @@ Cls()
 		
 		Next 
 
-		For Local Projectile:Projectiletype = Eachin ProjectileList
+		For Local Projectile:TProjectile = Eachin ProjectileList
 			Drawrect(Projectile.X, Projectile.Y,1,1)
 			Projectile.Move()
-			If Projectile.X > 800 or Projectile.X < 0
+			If Projectile.X > 800 or Projectile.X < 0 or Projectile.Y > 600 or Projectile.Y < 0
 				listremove(projectileList,Projectile)
 			endif
 		Next

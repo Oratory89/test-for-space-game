@@ -49,27 +49,27 @@ import pub.opengles
 import pub.opengles3
 import pub.vulkan
 import pub.xmmintrin
-CharacterType^Object{
+TCharacter^Object{
 .X#&
 .Y#&
 .Dir#&
 .Speed#&
 .Texture:TImage&
 .Weapon$&
--New()="__m_game_CharacterType_New"
--Draw()="_m_game_CharacterType_Draw"
--Shoot()="_m_game_CharacterType_Shoot"
--Move()="_m_game_CharacterType_Move"
-}="_m_game_CharacterType"
-ProjectileType^Object{
+-New()="__m_game_TCharacter_New"
+-Draw()="_m_game_TCharacter_Draw"
+-Shoot()="_m_game_TCharacter_Shoot"
+-Move()="_m_game_TCharacter_Move"
+}="_m_game_TCharacter"
+TProjectile^Object{
 .ID%&
 .X#&
 .Y#&
 .Dir#&
 .Speed#&
--New()="__m_game_ProjectileType_New"
--Move()="_m_game_ProjectileType_Move"
-}="_m_game_ProjectileType"
+-New()="__m_game_TProjectile_New"
+-Move()="_m_game_TProjectile_Move"
+}="_m_game_TProjectile"
 GroundTImage:TImage&=mem:p("_m_game_GroundTImage")
 DudeTImage:TImage&=mem:p("_m_game_DudeTImage")
 DudeX#&=mem:p("_m_game_DudeX")
