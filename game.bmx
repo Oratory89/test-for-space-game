@@ -120,6 +120,7 @@ Cls()
 		Next 
 
 		For Local Projectile:TProjectile = Eachin ProjectileList
+			DrawText( "Bullets: "+ProjectileList.Count(), 10, 10 )
 			Drawrect(Projectile.X, Projectile.Y,1,1)
 			Projectile.Move()
 			If Projectile.X > 800 or Projectile.X < 0 or Projectile.Y > 600 or Projectile.Y < 0

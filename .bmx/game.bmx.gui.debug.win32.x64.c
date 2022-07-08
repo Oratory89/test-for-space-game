@@ -23,6 +23,12 @@ static BBString _s1={
 	,97,100,121,32,101,120,105,115,116,115,32,105,110,32,116,104
 	,101,32,109,97,112}
 };
+static BBString _s14={
+	&bbStringClass,
+	0x13689deafd100bd1,
+	9,
+	{66,117,108,108,101,116,115,58,32}
+};
 static BBString _s13={
 	&bbStringClass,
 	0x74ea3849079de930,
@@ -896,12 +902,15 @@ int _bb_main(){
 						}
 						struct BBDebugStm __stmt_0 = {0x2c7cc27c5469e525, 123, 0};
 						bbOnDebugEnterStm(&__stmt_0);
-						brl_max2d_DrawRect(((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_x ,((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_y ,1.00000000f,1.00000000f);
+						brl_max2d_DrawText(bbStringConcat(&_s14,bbStringFromInt(((struct brl_linkedlist_TList_obj*)bbNullObjectTest(_m_game_ProjectileList))->clas->m_Count((struct brl_linkedlist_TList_obj*)_m_game_ProjectileList))),10.0000000f,10.0000000f);
 						struct BBDebugStm __stmt_1 = {0x2c7cc27c5469e525, 124, 0};
 						bbOnDebugEnterStm(&__stmt_1);
-						((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->clas->m_Move((struct _m_game_TProjectile_obj*)bbt_Projectile);
+						brl_max2d_DrawRect(((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_x ,((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_y ,1.00000000f,1.00000000f);
 						struct BBDebugStm __stmt_2 = {0x2c7cc27c5469e525, 125, 0};
 						bbOnDebugEnterStm(&__stmt_2);
+						((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->clas->m_Move((struct _m_game_TProjectile_obj*)bbt_Projectile);
+						struct BBDebugStm __stmt_3 = {0x2c7cc27c5469e525, 126, 0};
+						bbOnDebugEnterStm(&__stmt_3);
 						if((((((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_x >800.000000f) || (((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_x <0.000000000f)) || (((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_y >600.000000f)) || (((struct _m_game_TProjectile_obj*)bbNullObjectTest(bbt_Projectile))->__m_game_tprojectile_y <0.000000000f)){
 							struct BBDebugScope __scope = {
 								BBDEBUGSCOPE_LOCALBLOCK,
@@ -911,7 +920,7 @@ int _bb_main(){
 								}
 							};
 							bbOnDebugEnterScope(&__scope);
-							struct BBDebugStm __stmt_0 = {0x2c7cc27c5469e525, 126, 0};
+							struct BBDebugStm __stmt_0 = {0x2c7cc27c5469e525, 127, 0};
 							bbOnDebugEnterStm(&__stmt_0);
 							brl_linkedlist_ListRemove((struct brl_linkedlist_TList_obj*)_m_game_ProjectileList,(BBOBJECT)bbt_Projectile);
 							bbOnDebugLeaveScope();
@@ -921,7 +930,7 @@ int _bb_main(){
 					bbOnDebugLeaveScope();
 				}
 			}
-			struct BBDebugStm __stmt_3 = {0x2c7cc27c5469e525, 131, 0};
+			struct BBDebugStm __stmt_3 = {0x2c7cc27c5469e525, 132, 0};
 			bbOnDebugEnterStm(&__stmt_3);
 			brl_graphics_Flip(-1);
 			bbOnDebugLeaveScope();
