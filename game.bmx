@@ -61,7 +61,7 @@ Type TCharacter
 		'NewProjectile.Dir = Dir
 		'NewProjectile.Speed = 0.02
 		'ProjectileList.AddLast(NewProjectile)
-		ProjectileList.addlast(New TProjectile(X,Y,Dir,Self.Speed))
+		ProjectileList.addlast(New TProjectile(X,Y,Dir,0.02))
 	End Method
 
 

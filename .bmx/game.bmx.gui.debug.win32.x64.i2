@@ -62,13 +62,13 @@ TCharacter^Object{
 -Move()="_m_game_TCharacter_Move"
 }="_m_game_TCharacter"
 TProjectile^Object{
-.ID%&
 .X#&
 .Y#&
 .Dir#&
 .Speed#&
 -New()="__m_game_TProjectile_New"
 -Move()="_m_game_TProjectile_Move"
+-New(X#,Y#,Dir#,Speed#)="_m_game_TProjectile_New_ffff"
 }="_m_game_TProjectile"
 GroundTImage:TImage&=mem:p("_m_game_GroundTImage")
 DudeTImage:TImage&=mem:p("_m_game_DudeTImage")

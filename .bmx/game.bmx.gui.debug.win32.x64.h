@@ -98,6 +98,8 @@ struct _m_game_TCharacter_obj {
 	BBSTRING __m_game_tcharacter_weapon;
 };
 extern struct BBClass__m_game_TCharacter _m_game_TCharacter;
+void __m_game_TProjectile_New_ffff(struct _m_game_TProjectile_obj* o,BBFLOAT bbt_X,BBFLOAT bbt_Y,BBFLOAT bbt_Dir,BBFLOAT bbt_Speed);
+struct _m_game_TProjectile_obj* __m_game_TProjectile_New_ffff_ObjectNew(BBClass * clas,BBFLOAT bbt_X,BBFLOAT bbt_Y,BBFLOAT bbt_Dir,BBFLOAT bbt_Speed);
 void __m_game_TProjectile_New(struct _m_game_TProjectile_obj* o);
 typedef void (*_m_game_TProjectile_Move_m)(struct _m_game_TProjectile_obj*);
 void __m_game_TProjectile_Move(struct _m_game_TProjectile_obj*);
@@ -121,7 +123,6 @@ struct BBClass__m_game_TProjectile {
 
 struct _m_game_TProjectile_obj {
 	struct BBClass__m_game_TProjectile* clas;
-	BBINT __m_game_tprojectile_id;
 	BBFLOAT __m_game_tprojectile_x;
 	BBFLOAT __m_game_tprojectile_y;
 	BBFLOAT __m_game_tprojectile_dir;
