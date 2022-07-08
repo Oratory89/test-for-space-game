@@ -52,23 +52,24 @@
 #include <pub.mod/vulkan.mod/.bmx/vulkan.bmx.release.win32.x64.h>
 #include <pub.mod/xmmintrin.mod/.bmx/xmmintrin.bmx.release.win32.x64.h>
 int _bb_main();
-struct _m_game_CharacterType_obj;
-struct _m_game_ProjectileType_obj;
+struct _m_game_TCharacter_obj;
+struct _m_game_TProjectile_obj;
 extern struct brl_max2d_image_TImage_obj* _m_game_GroundTImage;
 extern struct brl_max2d_image_TImage_obj* _m_game_DudeTImage;
+extern struct brl_max2d_image_TImage_obj* _m_game_BulletTImage;
 extern BBFLOAT _m_game_DudeX;
 extern BBFLOAT _m_game_DudeY;
 extern struct brl_linkedlist_TList_obj* _m_game_CharacterList;
 extern struct brl_linkedlist_TList_obj* _m_game_ProjectileList;
 extern BBARRAY _m_game_Map_Array;
-void __m_game_CharacterType_New(struct _m_game_CharacterType_obj* o);
-typedef void (*_m_game_CharacterType_Draw_m)(struct _m_game_CharacterType_obj*);
-void __m_game_CharacterType_Draw(struct _m_game_CharacterType_obj*);
-typedef void (*_m_game_CharacterType_Shoot_m)(struct _m_game_CharacterType_obj*);
-void __m_game_CharacterType_Shoot(struct _m_game_CharacterType_obj*);
-typedef void (*_m_game_CharacterType_Move_m)(struct _m_game_CharacterType_obj*);
-void __m_game_CharacterType_Move(struct _m_game_CharacterType_obj*);
-struct BBClass__m_game_CharacterType {
+void __m_game_TCharacter_New(struct _m_game_TCharacter_obj* o);
+typedef void (*_m_game_TCharacter_Draw_m)(struct _m_game_TCharacter_obj*);
+void __m_game_TCharacter_Draw(struct _m_game_TCharacter_obj*);
+typedef void (*_m_game_TCharacter_Shoot_m)(struct _m_game_TCharacter_obj*);
+void __m_game_TCharacter_Shoot(struct _m_game_TCharacter_obj*);
+typedef void (*_m_game_TCharacter_Move_m)(struct _m_game_TCharacter_obj*);
+void __m_game_TCharacter_Move(struct _m_game_TCharacter_obj*);
+struct BBClass__m_game_TCharacter {
 	BBClass*  super;
 	void      (*free)( BBObject *o );
 	BBDebugScope* debug_scope;
@@ -83,25 +84,27 @@ struct BBClass__m_game_CharacterType {
 	unsigned int obj_size;
 	unsigned int instance_count;
 	unsigned int fields_offset;
-	_m_game_CharacterType_Draw_m m_Draw;
-	_m_game_CharacterType_Shoot_m m_Shoot;
-	_m_game_CharacterType_Move_m m_Move;
+	_m_game_TCharacter_Draw_m m_Draw;
+	_m_game_TCharacter_Shoot_m m_Shoot;
+	_m_game_TCharacter_Move_m m_Move;
 };
 
-struct _m_game_CharacterType_obj {
-	struct BBClass__m_game_CharacterType* clas;
-	BBFLOAT __m_game_charactertype_x;
-	BBFLOAT __m_game_charactertype_y;
-	BBFLOAT __m_game_charactertype_dir;
-	BBFLOAT __m_game_charactertype_speed;
-	struct brl_max2d_image_TImage_obj* __m_game_charactertype_texture;
-	BBSTRING __m_game_charactertype_weapon;
+struct _m_game_TCharacter_obj {
+	struct BBClass__m_game_TCharacter* clas;
+	BBFLOAT __m_game_tcharacter_x;
+	BBFLOAT __m_game_tcharacter_y;
+	BBFLOAT __m_game_tcharacter_dir;
+	BBFLOAT __m_game_tcharacter_speed;
+	struct brl_max2d_image_TImage_obj* __m_game_tcharacter_texture;
+	BBSTRING __m_game_tcharacter_weapon;
 };
-extern struct BBClass__m_game_CharacterType _m_game_CharacterType;
-void __m_game_ProjectileType_New(struct _m_game_ProjectileType_obj* o);
-typedef void (*_m_game_ProjectileType_Move_m)(struct _m_game_ProjectileType_obj*);
-void __m_game_ProjectileType_Move(struct _m_game_ProjectileType_obj*);
-struct BBClass__m_game_ProjectileType {
+extern struct BBClass__m_game_TCharacter _m_game_TCharacter;
+void __m_game_TProjectile_New_ffff(struct _m_game_TProjectile_obj* o,BBFLOAT bbt_X,BBFLOAT bbt_Y,BBFLOAT bbt_Dir,BBFLOAT bbt_Speed);
+struct _m_game_TProjectile_obj* __m_game_TProjectile_New_ffff_ObjectNew(BBClass * clas,BBFLOAT bbt_X,BBFLOAT bbt_Y,BBFLOAT bbt_Dir,BBFLOAT bbt_Speed);
+void __m_game_TProjectile_New(struct _m_game_TProjectile_obj* o);
+typedef void (*_m_game_TProjectile_Move_m)(struct _m_game_TProjectile_obj*);
+void __m_game_TProjectile_Move(struct _m_game_TProjectile_obj*);
+struct BBClass__m_game_TProjectile {
 	BBClass*  super;
 	void      (*free)( BBObject *o );
 	BBDebugScope* debug_scope;
@@ -116,17 +119,16 @@ struct BBClass__m_game_ProjectileType {
 	unsigned int obj_size;
 	unsigned int instance_count;
 	unsigned int fields_offset;
-	_m_game_ProjectileType_Move_m m_Move;
+	_m_game_TProjectile_Move_m m_Move;
 };
 
-struct _m_game_ProjectileType_obj {
-	struct BBClass__m_game_ProjectileType* clas;
-	BBINT __m_game_projectiletype_id;
-	BBFLOAT __m_game_projectiletype_x;
-	BBFLOAT __m_game_projectiletype_y;
-	BBFLOAT __m_game_projectiletype_dir;
-	BBFLOAT __m_game_projectiletype_speed;
+struct _m_game_TProjectile_obj {
+	struct BBClass__m_game_TProjectile* clas;
+	BBFLOAT __m_game_tprojectile_x;
+	BBFLOAT __m_game_tprojectile_y;
+	BBFLOAT __m_game_tprojectile_dir;
+	BBFLOAT __m_game_tprojectile_speed;
 };
-extern struct BBClass__m_game_ProjectileType _m_game_ProjectileType;
+extern struct BBClass__m_game_TProjectile _m_game_TProjectile;
 
 #endif

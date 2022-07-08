@@ -56,6 +56,7 @@ struct _m_game_TCharacter_obj;
 struct _m_game_TProjectile_obj;
 extern struct brl_max2d_image_TImage_obj* _m_game_GroundTImage;
 extern struct brl_max2d_image_TImage_obj* _m_game_DudeTImage;
+extern struct brl_max2d_image_TImage_obj* _m_game_BulletTImage;
 extern BBFLOAT _m_game_DudeX;
 extern BBFLOAT _m_game_DudeY;
 extern struct brl_linkedlist_TList_obj* _m_game_CharacterList;

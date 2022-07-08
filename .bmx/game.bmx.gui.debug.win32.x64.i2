@@ -72,6 +72,7 @@ TProjectile^Object{
 }="_m_game_TProjectile"
 GroundTImage:TImage&=mem:p("_m_game_GroundTImage")
 DudeTImage:TImage&=mem:p("_m_game_DudeTImage")
+BulletTImage:TImage&=mem:p("_m_game_BulletTImage")
 DudeX#&=mem:p("_m_game_DudeX")
 DudeY#&=mem:p("_m_game_DudeY")
 CharacterList:TList&=mem:p("_m_game_CharacterList")

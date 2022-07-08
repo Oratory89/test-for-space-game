@@ -4,6 +4,7 @@ SeedRnd(MilliSecs())
 
 Global GroundTImage:TImage = LoadImage ("Textures\Ground.bmp")
 Global DudeTImage:TImage = LoadImage ("Textures\Dude.bmp")
+Global BulletTImage:TImage = LoadImage ("Textures\Bullet.bmp")
 
 
 Global DudeX:Float = 400
@@ -61,7 +62,7 @@ Type TCharacter
 		'NewProjectile.Dir = Dir
 		'NewProjectile.Speed = 0.02
 		'ProjectileList.AddLast(NewProjectile)
-		ProjectileList.addlast(New TProjectile(X,Y,Dir,0.02))
+		ProjectileList.addlast(New TProjectile(X,Y,Dir,0.2))
 	End Method
 
 
@@ -119,15 +120,16 @@ Cls()
 		
 		Next 
 
-		For Local Projectile:TProjectile = Eachin ProjectileList
-			DrawText( "Bullets: "+ProjectileList.Count(), 10, 10 )
-			Drawrect(Projectile.X, Projectile.Y,1,1)
-			Projectile.Move()
-			If Projectile.X > 800 or Projectile.X < 0 or Projectile.Y > 600 or Projectile.Y < 0
-				listremove(projectileList,Projectile)
-			endif
-		Next
 	Next ' DrawTerrain
+
+	For Local Projectile:TProjectile = Eachin ProjectileList
+		DrawText( "Bullets: "+ProjectileList.Count(), 10, 10 )
+		DrawImage(BulletTImage,Projectile.X, Projectile.Y)
+		Projectile.Move()
+		If Projectile.X > 800 or Projectile.X < 0 or Projectile.Y > 600 or Projectile.Y < 0
+			listremove(projectileList,Projectile)
+		endif
+	Next
 
 Flip()
 Wend
