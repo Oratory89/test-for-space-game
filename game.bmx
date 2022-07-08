@@ -20,8 +20,8 @@ For Local X:Int = 0 To 49' Creating a "floor"
 Next
 
 
+
 Type TProjectile
-	Field ID:Int
 	Field X:Float
 	Field Y:Float
 	Field Dir:Float
@@ -31,6 +31,14 @@ Type TProjectile
 	Method Move()
 		X:+Speed*Cos( Dir ); Y:+Speed*Sin( Dir )		
 	EndMethod
+
+	Method New(X:Float,Y:Float,Dir:Float,Speed:Float)
+		Self.X = X
+		Self.Y = Y
+		Self.Dir = Dir
+		Self.Speed = Speed
+	EndMethod
+
 EndType
 
 Type TCharacter 
@@ -47,13 +55,15 @@ Type TCharacter
 
 	Method Shoot()
 		Local NewProjectile:TProjectile
-		NewProjectile = New TProjectile
-		NewProjectile.X = X
-		NewProjectile.Y = Y
-		NewProjectile.Dir = Dir
-		NewProjectile.Speed = 0.02
-		ProjectileList.AddLast(NewProjectile)
+		'NewProjectile = New TProjectile
+		'NewProjectile.X = X
+		'NewProjectile.Y = Y
+		'NewProjectile.Dir = Dir
+		'NewProjectile.Speed = 0.02
+		'ProjectileList.AddLast(NewProjectile)
+		ProjectileList.addlast(New TProjectile(X,Y,Dir,Self.Speed))
 	End Method
+
 
 	Method Move() 'Movement for TCharacter
 		If Speed < 0 then Speed = 0
