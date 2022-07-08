@@ -1,2 +1,3 @@
-game.debug.exe
-game.exe
+*.exe
+*.debug
+.bmx
