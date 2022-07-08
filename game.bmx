@@ -83,8 +83,8 @@ End Type
 For Local N:int = 1 To 1
     Local NewCharacter:CharacterType
     NewCharacter   = New CharacterType
-    NewCharacter.X  = Rand( 5, 800 )
-	NewCharacter.Y = Rand( 5, 600 )
+    NewCharacter.X = 400
+	NewCharacter.Y = 300
     NewCharacter.Dir  = Rand( 0, 360 )
     CharacterList.AddLast( NewCharacter )
 Next

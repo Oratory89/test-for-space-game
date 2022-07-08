@@ -704,10 +704,10 @@ int _bb_main(){
 				bbt_NewCharacter=(struct _m_game_CharacterType_obj*)(struct _m_game_CharacterType_obj*)bbObjectNew((BBClass *)&_m_game_CharacterType);
 				struct BBDebugStm __stmt_2 = {0x2c7cc27c5469e525, 86, 0};
 				bbOnDebugEnterStm(&__stmt_2);
-				((struct _m_game_CharacterType_obj*)bbNullObjectTest(bbt_NewCharacter))->__m_game_charactertype_x =((BBFLOAT)brl_random_Rand(5,800));
+				((struct _m_game_CharacterType_obj*)bbNullObjectTest(bbt_NewCharacter))->__m_game_charactertype_x =400.000000f;
 				struct BBDebugStm __stmt_3 = {0x2c7cc27c5469e525, 87, 0};
 				bbOnDebugEnterStm(&__stmt_3);
-				((struct _m_game_CharacterType_obj*)bbNullObjectTest(bbt_NewCharacter))->__m_game_charactertype_y =((BBFLOAT)brl_random_Rand(5,600));
+				((struct _m_game_CharacterType_obj*)bbNullObjectTest(bbt_NewCharacter))->__m_game_charactertype_y =300.000000f;
 				struct BBDebugStm __stmt_4 = {0x2c7cc27c5469e525, 88, 0};
 				bbOnDebugEnterStm(&__stmt_4);
 				((struct _m_game_CharacterType_obj*)bbNullObjectTest(bbt_NewCharacter))->__m_game_charactertype_dir =((BBFLOAT)brl_random_Rand(0,360));
