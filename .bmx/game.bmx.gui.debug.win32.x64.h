@@ -57,8 +57,6 @@ struct _m_game_TProjectile_obj;
 extern struct brl_max2d_image_TImage_obj* _m_game_GroundTImage;
 extern struct brl_max2d_image_TImage_obj* _m_game_DudeTImage;
 extern struct brl_max2d_image_TImage_obj* _m_game_BulletTImage;
-extern BBFLOAT _m_game_DudeX;
-extern BBFLOAT _m_game_DudeY;
 extern struct brl_linkedlist_TList_obj* _m_game_CharacterList;
 extern struct brl_linkedlist_TList_obj* _m_game_ProjectileList;
 extern BBARRAY _m_game_Map_Array;
@@ -104,6 +102,8 @@ struct _m_game_TProjectile_obj* __m_game_TProjectile_New_ffff_ObjectNew(BBClass 
 void __m_game_TProjectile_New(struct _m_game_TProjectile_obj* o);
 typedef void (*_m_game_TProjectile_Move_m)(struct _m_game_TProjectile_obj*);
 void __m_game_TProjectile_Move(struct _m_game_TProjectile_obj*);
+typedef void (*_m_game_TProjectile_Draw_m)(struct _m_game_TProjectile_obj*);
+void __m_game_TProjectile_Draw(struct _m_game_TProjectile_obj*);
 struct BBClass__m_game_TProjectile {
 	BBClass*  super;
 	void      (*free)( BBObject *o );
@@ -120,6 +120,7 @@ struct BBClass__m_game_TProjectile {
 	unsigned int instance_count;
 	unsigned int fields_offset;
 	_m_game_TProjectile_Move_m m_Move;
+	_m_game_TProjectile_Draw_m m_Draw;
 };
 
 struct _m_game_TProjectile_obj {
@@ -128,6 +129,7 @@ struct _m_game_TProjectile_obj {
 	BBFLOAT __m_game_tprojectile_y;
 	BBFLOAT __m_game_tprojectile_dir;
 	BBFLOAT __m_game_tprojectile_speed;
+	struct brl_max2d_image_TImage_obj* __m_game_tprojectile_texture;
 };
 extern struct BBClass__m_game_TProjectile _m_game_TProjectile;
 

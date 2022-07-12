@@ -66,15 +66,15 @@ TProjectile^Object{
 .Y#&
 .Dir#&
 .Speed#&
+.Texture:TImage&
 -New()="__m_game_TProjectile_New"
 -Move()="_m_game_TProjectile_Move"
 -New(X#,Y#,Dir#,Speed#)="_m_game_TProjectile_New_ffff"
+-Draw()="_m_game_TProjectile_Draw"
 }="_m_game_TProjectile"
 GroundTImage:TImage&=mem:p("_m_game_GroundTImage")
 DudeTImage:TImage&=mem:p("_m_game_DudeTImage")
 BulletTImage:TImage&=mem:p("_m_game_BulletTImage")
-DudeX#&=mem:p("_m_game_DudeX")
-DudeY#&=mem:p("_m_game_DudeY")
 CharacterList:TList&=mem:p("_m_game_CharacterList")
 ProjectileList:TList&=mem:p("_m_game_ProjectileList")
 Map_Array%&[,]&=mem:p("_m_game_Map_Array")

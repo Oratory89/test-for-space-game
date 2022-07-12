@@ -6,9 +6,7 @@ Global GroundTImage:TImage = LoadImage ("Textures\Ground.bmp")
 Global DudeTImage:TImage = LoadImage ("Textures\Dude.bmp")
 Global BulletTImage:TImage = LoadImage ("Textures\Bullet.bmp")
 
-
-Global DudeX:Float = 400
-Global DudeY:Float = 250
+'SetImageHandle( DudeTImage, 8, 0 )
 
 Global CharacterList:TList = CreateList()
 Global ProjectileList:Tlist = CreateList()
@@ -27,7 +25,7 @@ Type TProjectile
 	Field Y:Float
 	Field Dir:Float
 	Field Speed:Float = 0.2
-	'Field Texture:TImage = ProjectileTImage
+	Field Texture:TImage = BulletTImage
 
 	Method Move()
 		X:+Speed*Cos( Dir ); Y:+Speed*Sin( Dir )		
@@ -40,6 +38,12 @@ Type TProjectile
 		Self.Speed = Speed
 	EndMethod
 
+	Method Draw()
+		'setrotation(Dir)
+		DrawImage( Texture, 0, 0)
+		'Setrotation(0)
+	End Method
+
 EndType
 
 Type TCharacter 
@@ -49,19 +53,18 @@ Type TCharacter
 	Field Speed:float = 0.02 
 	Field Texture:TImage = DudeTImage
 	Field Weapon:string = "Default_Weapon"
+
+
 	Method Draw()
-		DrawImage( Texture, X, Y)
-		'DrawImage( DudeTImage, X, Y)
+		setrotation(Dir+90)
+		setorigin(X-8,Y)
+		DrawImage(Texture,0,0)
+		setorigin(0,0)
+		setrotation(0)
 	End Method
 
 	Method Shoot()
 		Local NewProjectile:TProjectile
-		'NewProjectile = New TProjectile
-		'NewProjectile.X = X
-		'NewProjectile.Y = Y
-		'NewProjectile.Dir = Dir
-		'NewProjectile.Speed = 0.02
-		'ProjectileList.AddLast(NewProjectile)
 		ProjectileList.addlast(New TProjectile(X,Y,Dir,0.2))
 	End Method
 
@@ -106,12 +109,14 @@ Cls()
 	For local Character:TCharacter = EachIn CharacterList
 		Character.Draw()
 		Character.Move()	
-		Print Character.Dir
-		Print Character.Speed
+		'Print Character.Dir
+		'Print Character.Speed
+		Drawtext("Ship.X: "+Character.X,10,20)
+		Drawtext("Ship.Y: "+Character.Y,10,30)
 	next
 
 
-	For Local X:Int = 0 To 50 - 1 ' DrawTerrain and bullets
+	For Local X:Int = 0 To 50 - 1 ' DrawTerrain
 		For Local Y:Int = 0 To 50 - 1
 		
 			If Map_Array[X, Y] = 1
@@ -122,14 +127,15 @@ Cls()
 
 	Next ' DrawTerrain
 
-	For Local Projectile:TProjectile = Eachin ProjectileList
-		DrawText( "Bullets: "+ProjectileList.Count(), 10, 10 )
-		DrawImage(BulletTImage,Projectile.X, Projectile.Y)
+	For Local Projectile:TProjectile = Eachin ProjectileList ' DrawBullets
+		Projectile.Draw()
 		Projectile.Move()
 		If Projectile.X > 800 or Projectile.X < 0 or Projectile.Y > 600 or Projectile.Y < 0
 			listremove(projectileList,Projectile)
 		endif
 	Next
+
+	DrawText( "Bullets: "+ProjectileList.Count(), 10, 10 )
 
 Flip()
 Wend
