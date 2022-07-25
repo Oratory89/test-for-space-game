@@ -5,8 +5,11 @@ SeedRnd(MilliSecs())
 Global GroundTImage:TImage = LoadImage ("Textures\Ground.bmp")
 Global DudeTImage:TImage = LoadImage ("Textures\Dude.bmp")
 Global BulletTImage:TImage = LoadImage ("Textures\Bullet.bmp")
+Global pewpewTImage:TImage = LoadImage ("Textures\pewpew.bmp")
 
-'SetImageHandle( DudeTImage, 8, 0 )
+SetImageHandle( DudeTImage, 8, 0 )
+SetImageHandle( pewpewTImage, 2, 0)
+
 
 Global CharacterList:TList = CreateList()
 Global ProjectileList:Tlist = CreateList()
@@ -40,28 +43,38 @@ Type TProjectile
 
 	Method Draw()
 		'setrotation(Dir)
-		DrawImage( Texture, 0, 0)
+		DrawImage( Texture, X, Y)
 		'Setrotation(0)
 	End Method
 
 EndType
 
+
+
 Type TCharacter 
-	Field X:Float
-	Field Y:Float
+	Field X:Float = 400
+	Field Y:Float = 300
 	Field Dir:float
 	Field Speed:float = 0.02 
+	Field W1:TImage = pewpewTImage
+	Field W1X:Float = X +8
+	Field W1Y:Float = Y +8
 	Field Texture:TImage = DudeTImage
 	Field Weapon:string = "Default_Weapon"
 
 
 	Method Draw()
+		Local Lx:Float = ((X-W1X)*cos(Dir) - (Y-W1Y)*sin(Dir)+W1X)
+		Local Ly:Float = ((X-W1X)*sin(Dir) + (Y-W1Y)*cos(Dir)+W1Y)
 		setrotation(Dir+90)
-		setorigin(X-8,Y)
-		DrawImage(Texture,0,0)
-		setorigin(0,0)
+		DrawImage(Texture,X,Y)
+
+
+		DrawImage(W1,Lx,Ly)
 		setrotation(0)
 	End Method
+		
+		
 
 	Method Shoot()
 		Local NewProjectile:TProjectile
@@ -97,6 +110,8 @@ For Local N:int = 1 To 1
 	NewCharacter   = New TCharacter
 	NewCharacter.X = 400
 	NewCharacter.Y = 300
+	NewCharacter.W1Y = NewCharacter.X + 8
+	NewCharacter.W1Y = NewCharacter.Y + 8
 	NewCharacter.Dir  = Rand( 0, 360 )
 	CharacterList.AddLast( NewCharacter )
 Next
@@ -109,8 +124,7 @@ Cls()
 	For local Character:TCharacter = EachIn CharacterList
 		Character.Draw()
 		Character.Move()	
-		'Print Character.Dir
-		'Print Character.Speed
+		Print Character.Dir
 		Drawtext("Ship.X: "+Character.X,10,20)
 		Drawtext("Ship.Y: "+Character.Y,10,30)
 	next
@@ -136,6 +150,15 @@ Cls()
 	Next
 
 	DrawText( "Bullets: "+ProjectileList.Count(), 10, 10 )
+rem
+	Method RotateAroundPoint:TVec2D(point:TVec2D, angle:Float)
+		local xnew:float = (x - point.x) * cos(angle) - (y - point.y) * sin(angle) + point.x
+		local ynew:float = (x - point.x) * sin(angle) + (y - point.y) * cos(angle) + point.y
+		x = xnew
+		y = ynew
+		return self
+	End Method
+endrem
 
 Flip()
 Wend
