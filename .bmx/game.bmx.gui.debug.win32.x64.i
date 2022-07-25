@@ -54,6 +54,12 @@ TCharacter^Object{
 .Y#&
 .Dir#&
 .Speed#&
+.W1Texture:TImage&
+.W1X#&
+.W1Y#&
+.W1S#&
+.W1A#&
+.W1D#&
 .Texture:TImage&
 .Weapon$&
 -New()="__m_game_TCharacter_New"
@@ -75,6 +81,7 @@ TProjectile^Object{
 GroundTImage:TImage&=mem:p("_m_game_GroundTImage")
 DudeTImage:TImage&=mem:p("_m_game_DudeTImage")
 BulletTImage:TImage&=mem:p("_m_game_BulletTImage")
+pewpewTImage:TImage&=mem:p("_m_game_pewpewTImage")
 CharacterList:TList&=mem:p("_m_game_CharacterList")
 ProjectileList:TList&=mem:p("_m_game_ProjectileList")
 Map_Array%&[,]&=mem:p("_m_game_Map_Array")

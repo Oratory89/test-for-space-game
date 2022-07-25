@@ -56,21 +56,31 @@ Type TCharacter
 	Field Y:Float = 300
 	Field Dir:float
 	Field Speed:float = 0.02 
-	Field W1:TImage = pewpewTImage
-	Field W1X:Float = X +8
-	Field W1Y:Float = Y +8
+	Field W1Texture:TImage = pewpewTImage
+	Field W1X:Float
+	Field W1Y:Float
+	Field W1S:Float = 2
+	Field W1A:Float
+	Field W1D:Float = 20
 	Field Texture:TImage = DudeTImage
 	Field Weapon:string = "Default_Weapon"
 
 
 	Method Draw()
-		Local Lx:Float = ((X-W1X)*cos(Dir) - (Y-W1Y)*sin(Dir)+W1X)
-		Local Ly:Float = ((X-W1X)*sin(Dir) + (Y-W1Y)*cos(Dir)+W1Y)
+
+		W1A = dir mod 360
+		W1X = cos(W1A) * W1D
+		W1Y = Sin(W1A) * W1D
+		'Local Lx:Float = ((X-W1X)*cos(Dir) - (Y-W1Y)*sin(Dir)+W1X)
+		'Local Ly:Float = ((X-W1X)*sin(Dir) + (Y-W1Y)*cos(Dir)+W1Y)
+		'W1X = Lx
+		'W1Y = Ly
 		setrotation(Dir+90)
 		DrawImage(Texture,X,Y)
 
 
-		DrawImage(W1,Lx,Ly)
+		DrawImage(W1Texture,X+W1X,Y+W1Y)
+
 		setrotation(0)
 	End Method
 		
@@ -124,9 +134,12 @@ Cls()
 	For local Character:TCharacter = EachIn CharacterList
 		Character.Draw()
 		Character.Move()	
-		Print Character.Dir
+		'Print Character.Dir
 		Drawtext("Ship.X: "+Character.X,10,20)
 		Drawtext("Ship.Y: "+Character.Y,10,30)
+		Drawtext("W.X: "+Character.W1X,10,40)
+		Drawtext("W.Y: "+Character.W1Y,10,50)
+		Drawtext("Ship.Dir: " +character.Dir,10,60)
 	next
 
 
@@ -150,15 +163,6 @@ Cls()
 	Next
 
 	DrawText( "Bullets: "+ProjectileList.Count(), 10, 10 )
-rem
-	Method RotateAroundPoint:TVec2D(point:TVec2D, angle:Float)
-		local xnew:float = (x - point.x) * cos(angle) - (y - point.y) * sin(angle) + point.x
-		local ynew:float = (x - point.x) * sin(angle) + (y - point.y) * cos(angle) + point.y
-		x = xnew
-		y = ynew
-		return self
-	End Method
-endrem
 
 Flip()
 Wend
